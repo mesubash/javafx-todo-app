@@ -1,40 +1,72 @@
-<h4>ToDo Desktop Application</h4>
+# ToDo Desktop App
 
-This is a simple user-friendly desktop application developed using JavaFX for the college project.
+A desktop to-do list app built with JavaFX and MySQL, with user accounts and email verification.
 
-Before expecting too much from the project please note that it was developed within 2 days, and it is for the simple CRUD
-operation fulfilling project for the practice of the JavaFX.
-The simple purpose for the development is to get used to with the development of the desktop application and the
-completion of the Java project.
-I have used fxml for the layout design using the SceneBuilder tools that helped me a lot though-out the design of
-the UI.
-I have referenced the logic from websites and the AI tools like openai.
+<!-- Add a screenshot: ![Screenshot](docs/screenshot.png) -->
 
-*Design is not responsive, and it is currently well working in 14'. So may feel some layout mistakes
+## Features
 
+- **Register** with email verification (6-digit code sent via Gmail)
+- **Login** with BCrypt-hashed passwords
+- **Forgot password** with an emailed reset code (valid for 5 minutes)
+- **Tasks**: add, edit, delete, mark as completed, mark as important
 
-Here, in the project I have used just simple logic and some components are still not developed due to lack of time.
-Those components include the register and forget password features from the login interface.
-You can enhance them and suggest me to make it better everytime.
+## Tech Stack
 
-Database is used for the tasks store, and you may feel some betterment need out there, please consider this.
+Java 21 · JavaFX 21 · FXML (Scene Builder) · MySQL 8 · Maven · JavaMail · jBCrypt
 
-before running this make sure that your have mysql localserver active and have the same database and tables
-with necessary fields out there. I have given the table schemas out there under the resources.
-Feel free to make changes for the betterment of the application.
+## Getting Started
 
-Except for the remember me feature and the session I have tried to include all the features out there.
-I have used the database for the verification codes being sent to user mail to verify it is working code and valid.
+### Prerequisites
 
-In Short:
-Tools:
-Language: JavaFX(JAVA)
-Layout design: SceneBuilder, fxml
-Database: MySQL
--Bcrypt for password hashing
--Gmail server for mail sending
+- JDK 21+
+- MySQL 8 running locally
+- A Gmail account with an [App Password](https://support.google.com/accounts/answer/185833) (needed to send verification emails)
 
+### Setup
 
-* database is in localserver
-* make sure you have used the proper external library files like mysql connector,mail activation lib, Bcrypt lib etc
- * you can use all the features like registering the user and the forger password as well
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/mesubash/ToDo_Desktop_App.git
+   cd ToDo_Desktop_App
+   ```
+2. Create the database and tables:
+   ```bash
+   mysql -u root -p < db/schema.sql
+   ```
+3. Set environment variables:
+   ```bash
+   export DB_PASSWORD=your_mysql_password
+   export TODO_GMAIL_PASSWORD=your_gmail_app_password
+   # Optional (defaults shown):
+   # export DB_URL=jdbc:mysql://localhost:3306/todo_desktop_app
+   # export DB_USER=root
+   ```
+4. Run:
+   ```bash
+   ./mvnw javafx:run
+   ```
+
+## Project Structure
+
+```
+db/schema.sql                      MySQL schema
+src/main/java/todoapp/todo/        Controllers, DB access, validation
+  MailSender/                      Gmail SMTP sending + verification codes
+src/main/resources/todoapp/todo/   FXML views, icons, CSS
+```
+
+## Known Limitations
+
+- Layout isn't responsive. It was designed for a 14" screen.
+- No "remember me" or persistent session.
+- Registration only accepts `@gmail.com` addresses.
+- Sender account (`tododesktopapp`) is hardcoded in `GmailSender.java`.
+
+## About
+
+Built as an early-semester college project to learn JavaFX and desktop app development. Suggestions and PRs welcome.
+
+## License
+
+[MIT](LICENSE)
