@@ -25,8 +25,8 @@ Java 21 · JavaFX 21 · FXML (Scene Builder) · MySQL 8 · Maven · JavaMail · 
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/mesubash/ToDo_Desktop_App.git
-   cd ToDo_Desktop_App
+   git clone https://github.com/mesubash/javafx-todo-app.git
+   cd javafx-todo-app
    ```
 2. Create the database and tables:
    ```bash
