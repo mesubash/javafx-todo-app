@@ -2,8 +2,6 @@
 
 A desktop to-do list app built with JavaFX and MySQL, with user accounts and email verification.
 
-<!-- Add a screenshot: ![Screenshot](docs/screenshot.png) -->
-
 ## Features
 
 - **Register** with email verification (6-digit code sent via Gmail)
